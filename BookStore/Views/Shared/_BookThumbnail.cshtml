@@ -1,0 +1,18 @@
+﻿@model BookModel
+@{
+}
+<div class="card mb-4 shadow-sm">
+    <a href="#"><img class="card-img-top" src="@(Model.CoverImageUrl != null ? Model.CoverImageUrl : "http://placehold.it/700x400")" alt=""></a>
+</div>
+<div class="card-body">
+    <h3 class="card-title">@(string.IsNullOrEmpty(Model.Title) ? "Title not available" : Model.Title)</h3>
+    <p class="card-text">
+        @(string.IsNullOrEmpty(Model.Description) ? "Description not available" : Model.Description)
+    </p>
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+            <a asp-controller="Book" asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-secondary">View details</a>
+        </div>
+        <small class="text-muted">@Model.Author</small>
+    </div>
+</div>

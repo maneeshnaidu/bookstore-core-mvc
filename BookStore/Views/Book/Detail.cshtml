@@ -1,0 +1,116 @@
+﻿@model BookModel
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        @Model.Title
+        <small>by @Model.Author</small>
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+                <ol class="carousel-indicators">
+                    @for (int i = 0; i < Model.Gallery.Count(); i++)
+                    {
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                    }
+                </ol>
+                <div class="carousel-inner">
+
+                    @for (int i = 0; i < Model.Gallery.Count(); i++)
+                    {
+                        <div class="@(i == 0 ? "carousel-item active" : "carousel-item")">
+                            <img src="@(Model.Gallery[i].Url != null ? Model.Gallery[i].Url : "http://placehold.it/700x400" )" class="d-block w-100" alt="@Model.Gallery[i].Name">
+                        </div>
+                    }
+
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="my-3">Description</h3>
+            <p class="justify-content-center">@Model.Description</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a target="_blank" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#documentModal">
+                        Read now
+                    </a>
+                </div>
+            </div>
+            <h3 class="my-3">Book Details</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">Category : </span>@Model.Category</li>
+                <li class="list-group-item"><span class="font-weight-bold">Total Pages : </span>@Model.TotalPages</li>
+                <li class="list-group-item"><span class="font-weight-bold">Language : </span>@Model.Language</li>
+            </ul>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="documentModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="@Model.PdfBookUrl" class="w-100" ></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+    <!-- Related Projects Row -->
+    <h3 class="my-4">Related Projects</h3>
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->

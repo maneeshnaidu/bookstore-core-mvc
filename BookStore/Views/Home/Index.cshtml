@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@inject BookStore.Repository.IBookRepository _bookRepository
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="display-4">Welcome to Book Store</h1>
+        <p class="lead text-muted">
+            Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
+        </p>
+        <p>
+            <a href="#" class="btn btn-primary my-2">Search books</a>
+        </p>
+
+        @*Example of reading data from repository directly into view*@
+        @*@foreach (var item in await _bookRepository.GetAllBooks())
+        {
+            <h2>@item.Title</h2>
+        }*@
+    </div>    
+</section>
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <big>Top Books</big>
+
+        @*@await Component.InvokeAsync("TopBooks", new { count = 3})*@ 
+
+        <vc:top-books count="6"></vc:top-books>
+        
+    </div>
+</div>
