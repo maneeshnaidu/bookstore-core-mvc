@@ -17,6 +17,7 @@ namespace BookStore.Models
         public string LastName { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Please enter your email")]

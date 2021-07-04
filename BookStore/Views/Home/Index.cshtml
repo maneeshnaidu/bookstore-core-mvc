@@ -1,15 +1,13 @@
 ﻿
-@{
-    ViewData["Title"] = "Home Page";
-}
+@{ ViewData["Title"] = "Home"; }
 
 @inject BookStore.Repository.IBookRepository _bookRepository
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="display-4">Welcome to Book Store</h1>
+        <h1 class="display-4">Welcome to BookStore</h1>
         <p class="lead text-muted">
-            Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
+            A portfolio project by <a href="https://docs.microsoft.com/aspnet/core">Maneesh Naidu</a>.
         </p>
         <p>
             <a href="#" class="btn btn-primary my-2">Search books</a>
@@ -17,19 +15,54 @@
 
         @*Example of reading data from repository directly into view*@
         @*@foreach (var item in await _bookRepository.GetAllBooks())
-        {
-            <h2>@item.Title</h2>
-        }*@
-    </div>    
+            {
+                <h2>@item.Title</h2>
+            }*@
+    </div>
 </section>
+<!-- Icons Grid-->
+<section class="features-icons bg-light text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex"><i class="devicon-dotnetcore-plain m-auto text-primary"></i></div>
+                    <h3>Dotnet Core</h3>
+                    <p class="lead mb-0">
+                        Built with .NET Core 3.1 MVC Framework. A cross-platform, 
+                        open-source framework for the development of internet-connected, cloud-based modern web applications
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex"><i class="devicon-docker-plain m-auto text-primary"></i></div>
+                    <h3>Docker</h3>
+                    <p class="lead mb-0">This application is containerized with Docker.
+                        An open source project centered on virtualization of applications for multiple OS!</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex"><i class="devicon-mysql-plain m-auto text-primary"></i></div>
+                    <h3>Intergration with MySQL</h3>
+                    <p class="lead mb-0">Possibility of using MySQL (or MariaDB) with .Net Core opens an opportunity to use open-source & free database. 
+                        Moreover, one can take advantage of .Net Core or .Net 5 being cross-platform by bypassing all Microsoft's paid services!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <div class="py-5 bg-light">
     <div class="container">
-        <big>Top Books</big>
+        <big>Newly Added Books</big>
 
-        @*@await Component.InvokeAsync("TopBooks", new { count = 3})*@ 
+        @*@await Component.InvokeAsync("TopBooks", new { count = 3})*@
 
         <vc:top-books count="6"></vc:top-books>
-        
+
     </div>
 </div>

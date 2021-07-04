@@ -17,6 +17,14 @@
     {
       "library": "datatables.net@1.10.23",
       "destination": "wwwroot/lib/datatables.net/"
+    },
+    {
+      "library": "fontawesome-iconpicker@3.2.0",
+      "destination": "wwwroot/lib/fontawesome-iconpicker/"
+    },
+    {
+      "library": "bootstrap-icons@1.5.0",
+      "destination": "wwwroot/lib/bootstrap-icons/"
     }
   ]
 }

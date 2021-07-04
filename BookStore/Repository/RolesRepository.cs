@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Repository
 {
-    public class RolesRepository
+    public class RolesRepository : IRolesRepository
     {
         private readonly RoleManager<IdentityRole> _roleManager;
 
