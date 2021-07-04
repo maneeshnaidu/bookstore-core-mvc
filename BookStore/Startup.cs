@@ -31,7 +31,19 @@ namespace BookStore
         public void ConfigureServices(IServiceCollection services)
         {
             string dbConnectionString = Configuration.GetConnectionString("DefaultConnection");
-                services.AddDbContext<BookStoreContext>(
+
+            dbConnectionString = dbConnectionString.Replace("mysql://", string.Empty);
+            var userPassSide = dbConnectionString.Split("@")[0];
+            var hostSide = dbConnectionString.Split("@")[1];
+
+            var connUser = userPassSide.Split(":")[0];
+            var connPass = userPassSide.Split(":")[1];
+            var connHost = hostSide.Split("/")[0];
+            var connDb = hostSide.Split("/")[1].Split("?")[0];
+
+            dbConnectionString = $"server={connHost};Uid={connUser};Pwd={connPass};Database={connDb}";
+
+            services.AddDbContext<BookStoreContext>(
                 options => options.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
 
             //Method to configure the Identity service
